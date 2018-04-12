@@ -13,7 +13,11 @@ DialogRisk::~DialogRisk()
     delete ui;
 }
 
-/*DialogRisk::onSendData(QString n1, QString n2, QString n3, QString n4)
+void DialogRisk::on_buttonBox_accepted()
 {
-    emit sendDate(ui->textrisk->toPlainText(),ui->textinfo->toPlainText(),ui->textver->toPlainText(),ui->textpoter->toPlainText());
-}*/
+    emit sendRiskList(ui->textrisk->toPlainText(),ui->textinfo->toPlainText(),ui->textver->toPlainText(),ui->textpoter->toPlainText());
+    ui->textinfo->setText("");
+    ui->textrisk->setText("");
+    ui->textver->setText("");
+    ui->textpoter->setText("");
+}

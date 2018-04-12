@@ -15,11 +15,15 @@ public:
 
     explicit DialogResourse(QWidget *parent = 0);
     ~DialogResourse();
+private slots:
+    void onSendData();
+
+    void on_buttonBox_accepted();
 
 private:
     Ui::DialogResourse *ui;
 signals:
-    //void onSendData(QString a, QString b);
+    void sendData(QString a, QString b);
 
 };
 

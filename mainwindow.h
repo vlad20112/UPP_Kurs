@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "dialogrisk.h"
+#include "dialogresourse.h"
+#include "createkanban.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +21,7 @@ public:
 
 private slots:
       void set_data(QString name, QString value);
+      void set_risk_list(QString a, QString b, QString c, QString d);
       void opendialogres();
       void SaveFile();
       void LoadFile();
@@ -27,10 +31,18 @@ private slots:
       void DrawCard();
   //  void on_pushButton_2_clicked();
   //  void on_pushButton_3_clicked();
+      void on_add_res_clicked();
 
+      void on_addres_clicked();
+
+      void on_addrisk_clicked();
 
 private:
     Ui::MainWindow *ui;
+    DialogRisk Risk;
+    DialogResourse Resourse;
+    createKanban Board;
+
 
 };
 

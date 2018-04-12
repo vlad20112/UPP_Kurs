@@ -12,7 +12,14 @@ DialogResourse::~DialogResourse()
 {
     delete ui;
 }
-/*void DialogResourse::onSendData()
+void DialogResourse::onSendData()
+{
+
+}
+
+void DialogResourse::on_buttonBox_accepted()
 {
     emit sendData(ui->textEdit->toPlainText(), ui->textEdit_2->toPlainText());
-}*/
+    ui->textEdit->setText("");
+    ui->textEdit_2->setText("");
+}

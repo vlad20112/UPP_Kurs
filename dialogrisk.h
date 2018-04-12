@@ -15,6 +15,11 @@ public:
     explicit DialogRisk(QWidget *parent = 0);
     ~DialogRisk();
 
+signals:
+    void sendRiskList(QString,QString,QString,QString);
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::DialogRisk *ui;
 };

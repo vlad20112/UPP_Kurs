@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include <QString>
+#include <QDebug>
 #include <QTextEdit>
 #include <QFile>
 #include <QFileDialog>
 #include <QGraphicsScene>
 #include <QMessageBox>
 #include <QApplication>
+#include <QTableWidgetItem>
 #include <QLineEdit>
 #include "ui_mainwindow.h"
 #include "dialogresourse.h"
@@ -19,12 +21,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //initKanban();
-    connect(ui->add_res,SIGNAL(clicked(bool)),this,SLOT(opendialogres()));
+    connect(&Resourse,&DialogResourse::sendData,this,&MainWindow::set_data);
+    connect(&Risk,&DialogRisk::sendRiskList,this,&MainWindow::set_risk_list);
+    /*connect(ui->add_res,ui->add_res->,this,SLOT(opendialogres()));
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(SaveFile()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(LoadFile()));
     connect(ui->actionExit,SIGNAL(triggered(bool)),this,SLOT(AppQuit()));
     connect(ui->edit_res,SIGNAL(clicked(bool)),this,SLOT(ChangeTable()));
-    connect(ui->createKanban,SIGNAL(clicked(bool)),this,SLOT(initKanban()));
+    connect(ui->createKanban,SIGNAL(clicked(bool)),this,SLOT(initKanban()));*/
 }
 
 MainWindow::~MainWindow()
@@ -33,9 +37,8 @@ MainWindow::~MainWindow()
 }
 void MainWindow::opendialogres()
 {
-    DialogResourse a;
-    connect(&a,SIGNAL(sendData(QString,QString)),this,SLOT(set_data(QString,QString)));
-    a.exec();
+    connect(&Resourse,&DialogResourse::sendData,this,&MainWindow::set_data);
+    Resourse.show();
 }
 
 void MainWindow::ChangeTable()
@@ -43,6 +46,26 @@ void MainWindow::ChangeTable()
   /*  bool flag = ui->tableRes->property(enabled);
     QVariant prom = ~flag;
     ui->tableRes->setProperty(enabled,prom);*/
+}
+
+void MainWindow::set_risk_list(QString a, QString b, QString c, QString d)
+{
+    QTableWidgetItem *prom = new QTableWidgetItem(tr("%1"));
+    QTableWidgetItem *prom2 = new QTableWidgetItem(tr("%1"));
+    QTableWidgetItem *prom3 = new QTableWidgetItem(tr("%1"));
+    QTableWidgetItem *prom4 = new QTableWidgetItem(tr("%1"));
+     int aa = ui->tableWidget_2->rowCount() - 1;
+    prom->setText(a);
+    prom2->setText(b);
+    prom3->setText(c);
+    prom4->setText(d);
+    ui->tableWidget_2->setItem(aa,0,prom);
+    ui->tableWidget_2->setItem(aa,1,prom2);
+    ui->tableWidget_2->setItem(aa,2,prom3);
+    ui->tableWidget_2->setItem(aa,3,prom4);
+    qDebug() << "completed";
+    ui->tableWidget_2->setRowCount((ui->tableWidget_2->rowCount() + 1));
+
 }
 
 void MainWindow::initKanban()
@@ -64,14 +87,18 @@ void MainWindow::initKanban()
 
 void MainWindow::set_data(QString name, QString Yname)
 {
-    /*ui->actionSave(SaveFile);
-       if(ui->actionSave->isChecked())
-       {
-           SaveFile();
-       }*/
-    //ui->tableWidget->cellWidget(0,i) = name;
-    //ui->tableWidget->cellWidget(1,i) = Yname;
-    //qDebug() << name;
+
+    QTableWidgetItem * prom = new QTableWidgetItem(tr("%1"));
+    prom->setText(name);
+    ui->tableRes->setItem((ui->tableRes->rowCount() - 1),0,prom);
+    QTableWidgetItem * prom2 = new QTableWidgetItem(tr("%1"));
+    prom2->setText(Yname);
+    ui->tableRes->setItem((ui->tableRes->rowCount() - 1),1,prom2);
+    /*ui->tableRes->setCellWidget(0,1,name);
+    ui->tableRes->setCellWidget(1,1,Yname);*/
+    qDebug() << name;
+    qDebug() << Yname;
+    ui->tableRes->setRowCount((ui->tableRes->rowCount() + 1));
 }
 
 
@@ -119,6 +146,12 @@ void MainWindow::SaveFile()
         out << ui->tableRes->cellWidget(1,1);
     }
 }
+
+void MainWindow::on_addres_clicked()
+{
+    Resourse.show();
+}
+
 void MainWindow::AppQuit()
 {
     QApplication::quit();
@@ -130,28 +163,7 @@ void MainWindow::DrawCard()
 
 }
 
-
-/*void MainWindow::addResource(DialogRisk b, int i)
-{
-   /*ui->tableWidget->cellWidget(0,i) = b.textEdit.бла бла бла*/
-    /*ui->tableWidget->cellWidget(1,i) = b.textEdit_2.бла бла бла
-}*/
-
-/*void MainWindow::on_pushButton_2_clicked()
-{
-    DialogResourse a;
-    connect(&a,SIGNAL(sendData(QString,QString)),this,SLOT(set_data(QString,QString)));
-    a.exec();
-
-      
-    {
-
-     //некоторые действия для добавдения ресурсов
-    }
-}
-
-
-void MainWindow::on_pushButton_3_clicked()
+/*void MainWindow::on_pushButton_3_clicked()
 {
     DialogRisk a;
     if(a.exec())
@@ -159,3 +171,9 @@ void MainWindow::on_pushButton_3_clicked()
         //некоторые действия для добавдения рисков
     }
 }*/
+
+
+void MainWindow::on_addrisk_clicked()
+{
+    Risk.show();
+}
