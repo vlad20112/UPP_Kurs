@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>762</width>
-    <height>606</height>
+    <height>669</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -28,13 +28,63 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>741</width>
-      <height>551</height>
+      <width>751</width>
+      <height>601</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>1</number>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
     </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>описание проекта</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>741</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>741</width>
+         <height>431</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>621</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Здесь вы можете оставить описание вашего проекта,записать новые идеи для реализации </string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Риски</string>
@@ -47,7 +97,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>661</width>
+        <width>741</width>
         <height>521</height>
        </rect>
       </property>
@@ -62,7 +112,7 @@
         <rect>
          <x>20</x>
          <y>50</y>
-         <width>621</width>
+         <width>721</width>
          <height>431</height>
         </rect>
        </property>
@@ -73,7 +123,7 @@
         <number>4</number>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>150</number>
+        <number>176</number>
        </attribute>
        <attribute name="horizontalHeaderMinimumSectionSize">
         <number>51</number>
@@ -143,7 +193,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>661</width>
+        <width>741</width>
         <height>521</height>
        </rect>
       </property>
@@ -155,7 +205,7 @@
         <rect>
          <x>10</x>
          <y>60</y>
-         <width>641</width>
+         <width>721</width>
          <height>391</height>
         </rect>
        </property>
@@ -169,7 +219,7 @@
         <number>2</number>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>311</number>
+        <number>353</number>
        </attribute>
        <attribute name="horizontalHeaderMinimumSectionSize">
         <number>25</number>
@@ -191,7 +241,7 @@
         <rect>
          <x>60</x>
          <y>470</y>
-         <width>111</width>
+         <width>131</width>
          <height>23</height>
         </rect>
        </property>
@@ -217,7 +267,7 @@
         <rect>
          <x>440</x>
          <y>470</y>
-         <width>101</width>
+         <width>111</width>
          <height>23</height>
         </rect>
        </property>
@@ -248,7 +298,7 @@
         <rect>
          <x>20</x>
          <y>480</y>
-         <width>101</width>
+         <width>121</width>
          <height>23</height>
         </rect>
        </property>
@@ -331,6 +381,64 @@
       </widget>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>доска KANBAN</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>751</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QGraphicsView" name="graphicsView_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>741</width>
+         <height>491</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>0</y>
+         <width>601</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>  здесь вы сможете следить за тем, на каком этапе работы находятся ваши сотрудники</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="createKanban">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>530</y>
+         <width>171</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>создать доску KANBAN</string>
+       </property>
+      </widget>
+      <zorder>graphicsView_2</zorder>
+      <zorder>label_4</zorder>
+      <zorder>createKanban</zorder>
+      <zorder>createKanban</zorder>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -339,14 +447,9 @@
      <x>0</x>
      <y>0</y>
      <width>762</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>выход</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>справка</string>
@@ -360,10 +463,10 @@
     </property>
     <addaction name="actionSave"/>
     <addaction name="actionLoad"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menu_3"/>
    <addaction name="menu_2"/>
-   <addaction name="menu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -387,6 +490,11 @@
   <action name="actionLoad">
    <property name="text">
     <string>Загрузить</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>выход</string>
    </property>
   </action>
  </widget>

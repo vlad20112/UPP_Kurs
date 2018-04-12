@@ -21,6 +21,10 @@ private slots:
       void opendialogres();
       void SaveFile();
       void LoadFile();
+      void AppQuit();
+      void ChangeTable();
+      void initKanban();
+      void DrawCard();
   //  void on_pushButton_2_clicked();
   //  void on_pushButton_3_clicked();
 

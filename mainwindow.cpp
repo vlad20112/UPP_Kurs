@@ -3,19 +3,28 @@
 #include <QTextEdit>
 #include <QFile>
 #include <QFileDialog>
+#include <QGraphicsScene>
 #include <QMessageBox>
+#include <QApplication>
+#include <QLineEdit>
 #include "ui_mainwindow.h"
 #include "dialogresourse.h"
 #include "dialogrisk.h"
+#include "createkanban.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //initKanban();
     connect(ui->add_res,SIGNAL(clicked(bool)),this,SLOT(opendialogres()));
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(SaveFile()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(LoadFile()));
+    connect(ui->actionExit,SIGNAL(triggered(bool)),this,SLOT(AppQuit()));
+    connect(ui->edit_res,SIGNAL(clicked(bool)),this,SLOT(ChangeTable()));
+    connect(ui->createKanban,SIGNAL(clicked(bool)),this,SLOT(initKanban()));
 }
 
 MainWindow::~MainWindow()
@@ -29,11 +38,34 @@ void MainWindow::opendialogres()
     a.exec();
 }
 
+void MainWindow::ChangeTable()
+{
+  /*  bool flag = ui->tableRes->property(enabled);
+    QVariant prom = ~flag;
+    ui->tableRes->setProperty(enabled,prom);*/
+}
+
+void MainWindow::initKanban()
+{
+    createKanban a;
+    connect(&a,SIGNAL(sendData(QTableWidget, QTableWidget)),this,SLOT(set_data(QString,QString)));
+    a.exec();
+    /*QPen pen(Qt::black);
+    QBrush br(Qt::black);
+
+    QGraphicsScene *q = new QGraphicsScene;
+    //qreal a = 2;
+    QLine f (20,20,80,80);
+    q->addLine(f,pen);
+    ui->graphicsView_2->setScene(q);
+    //QGraphicsLineItem *a = new QGraphicsLineItem(f);
+    //QSize sizer = ui->graphicsView_2->size();*/
+}
 
 void MainWindow::set_data(QString name, QString Yname)
 {
-    //ui->actionSave(SaveFile);
-   /*    if(ui->actionSave->isChecked())
+    /*ui->actionSave(SaveFile);
+       if(ui->actionSave->isChecked())
        {
            SaveFile();
        }*/
@@ -46,7 +78,7 @@ void MainWindow::set_data(QString name, QString Yname)
 void MainWindow::LoadFile()
 {
     QString a = QFileDialog::getOpenFileName(this,tr("Загрузить файл"),"",
-                                             tr("*.dpr"));
+                                             tr("*.txt"));
     if(a.isEmpty())
         return;
     else
@@ -60,7 +92,9 @@ void MainWindow::LoadFile()
         }
         QDataStream in(&file);
         in.setVersion(QDataStream::Qt_4_5);
-        //in >> ui->tableRes->cellWidget(1,1);
+ /*       QTextEdit a = new QTextEdit;
+        in >> a;
+        ui->tableRes->setCellWidget(0,1,a);*/
     }
 }
 
@@ -68,7 +102,7 @@ void MainWindow::LoadFile()
 void MainWindow::SaveFile()
 {
     QString a = QFileDialog::getSaveFileName(this,tr("Какой-то текст"),"",
-                                           tr("DataProject(*.dpr)"));
+                                           tr("DataProject(*.txt)"));
     if (a.isEmpty())
         return;
     else
@@ -85,6 +119,17 @@ void MainWindow::SaveFile()
         out << ui->tableRes->cellWidget(1,1);
     }
 }
+void MainWindow::AppQuit()
+{
+    QApplication::quit();
+
+}
+
+void MainWindow::DrawCard()
+{
+
+}
+
 
 /*void MainWindow::addResource(DialogRisk b, int i)
 {
