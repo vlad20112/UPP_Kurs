@@ -12,3 +12,8 @@ createKanban::~createKanban()
 {
     delete ui;
 }
+
+/*void createKanban::on_buttonBox_accepted()
+{
+    emit sendKanban(ui->tableWidget,ui->tableWidget_2);
+}*/

@@ -26,17 +26,18 @@ SOURCES += \
         mainwindow.cpp \
     dialogresourse.cpp \
     dialogrisk.cpp \
-    createkanban.cpp
+    createkanban.cpp \
+    card.cpp
 
 HEADERS += \
         mainwindow.h \
     dialogresourse.h \
     dialogrisk.h \
-    createkanban.h
+    createkanban.h \
+    card.h
 
 FORMS += \
         mainwindow.ui \
     dialogresourse.ui \
     dialogrisk.ui \
-    ../../../../root/untitled2/dialog.ui \
     createkanban.ui

@@ -7,12 +7,14 @@
 #include <QGraphicsScene>
 #include <QMessageBox>
 #include <QApplication>
+#include <QTableWidget>
 #include <QTableWidgetItem>
 #include <QLineEdit>
 #include "ui_mainwindow.h"
 #include "dialogresourse.h"
 #include "dialogrisk.h"
 #include "createkanban.h"
+#include <card.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,12 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
     //initKanban();
     connect(&Resourse,&DialogResourse::sendData,this,&MainWindow::set_data);
     connect(&Risk,&DialogRisk::sendRiskList,this,&MainWindow::set_risk_list);
-    /*connect(ui->add_res,ui->add_res->,this,SLOT(opendialogres()));
+    //connect(&Board,&createKanban::sendKanban,this,&MainWindow::setKanban);
+    //connect(ui->add_res,ui->add_res->,this,SLOT(opendialogres()));
     connect(ui->actionSave,SIGNAL(triggered(bool)),this,SLOT(SaveFile()));
     connect(ui->actionLoad,SIGNAL(triggered(bool)),this,SLOT(LoadFile()));
     connect(ui->actionExit,SIGNAL(triggered(bool)),this,SLOT(AppQuit()));
-    connect(ui->edit_res,SIGNAL(clicked(bool)),this,SLOT(ChangeTable()));
-    connect(ui->createKanban,SIGNAL(clicked(bool)),this,SLOT(initKanban()));*/
+    //connect(ui->edit_res,SIGNAL(clicked(bool)),this,SLOT(ChangeTable()));
+    //connect(ui->createKanban,SIGNAL(clicked(bool)),this,SLOT(initKanban()));*/
 }
 
 MainWindow::~MainWindow()
@@ -68,6 +71,10 @@ void MainWindow::set_risk_list(QString a, QString b, QString c, QString d)
 
 }
 
+void MainWindow::setKanban(QTableWidget a, QTableWidget b)
+{
+}
+
 void MainWindow::initKanban()
 {
     createKanban a;
@@ -94,8 +101,6 @@ void MainWindow::set_data(QString name, QString Yname)
     QTableWidgetItem * prom2 = new QTableWidgetItem(tr("%1"));
     prom2->setText(Yname);
     ui->tableRes->setItem((ui->tableRes->rowCount() - 1),1,prom2);
-    /*ui->tableRes->setCellWidget(0,1,name);
-    ui->tableRes->setCellWidget(1,1,Yname);*/
     qDebug() << name;
     qDebug() << Yname;
     ui->tableRes->setRowCount((ui->tableRes->rowCount() + 1));
@@ -129,7 +134,7 @@ void MainWindow::LoadFile()
 void MainWindow::SaveFile()
 {
     QString a = QFileDialog::getSaveFileName(this,tr("Какой-то текст"),"",
-                                           tr("DataProject(*.txt)"));
+                                          tr("DataProject(*.txt)"));
     if (a.isEmpty())
         return;
     else
@@ -163,17 +168,21 @@ void MainWindow::DrawCard()
 
 }
 
-/*void MainWindow::on_pushButton_3_clicked()
-{
-    DialogRisk a;
-    if(a.exec())
-    {
-        //некоторые действия для добавдения рисков
-    }
-}*/
-
 
 void MainWindow::on_addrisk_clicked()
 {
     Risk.show();
+}
+
+void MainWindow::on_createKanban_clicked()
+{
+    Board.show();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    //Card card1("foma",Qt::red);
+    //Card::DrawCard(Kan);
+    //Kan.addItem(card1);
+    //ui->graphicsView_2->setScene(Kan);
 }

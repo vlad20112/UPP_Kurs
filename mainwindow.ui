@@ -42,7 +42,7 @@
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
@@ -407,8 +407,8 @@
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>0</y>
+         <x>80</x>
+         <y>10</y>
          <width>591</width>
          <height>20</height>
         </rect>
@@ -420,7 +420,7 @@
       <widget class="QPushButton" name="createKanban">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>120</x>
          <y>530</y>
          <width>171</width>
          <height>28</height>
@@ -430,10 +430,19 @@
         <string>создать доску KANBAN</string>
        </property>
       </widget>
-      <zorder>graphicsView_2</zorder>
-      <zorder>label_4</zorder>
-      <zorder>createKanban</zorder>
-      <zorder>createKanban</zorder>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>530</y>
+         <width>121</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>добавить задачу</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -444,7 +453,7 @@
      <x>0</x>
      <y>0</y>
      <width>762</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_2">
